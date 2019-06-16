@@ -252,4 +252,9 @@ public final class SettingsPage extends SettingsView implements DecoratorPage {
     protected void onSponsor() {
         FXUtils.openLink("https://hmcl.huangyuhui.net/api/redirect/sponsor");
     }
+
+    @Override
+    protected void onMrmc() {
+        FXUtils.openLink(Metadata.MRMC_URL);
+    }
 }

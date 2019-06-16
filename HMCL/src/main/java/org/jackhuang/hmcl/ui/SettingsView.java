@@ -109,6 +109,38 @@ public abstract class SettingsView extends StackPane {
                         settingsPane.getContent().add(sponsorPane);
                     }
 
+                    {
+                        StackPane sponsorPane = new StackPane();
+                        sponsorPane.setCursor(Cursor.HAND);
+                        sponsorPane.setOnMouseClicked(e -> onMrmc());
+
+                        GridPane gridPane = new GridPane();
+
+                        ColumnConstraints col = new ColumnConstraints();
+                        col.setHgrow(Priority.SOMETIMES);
+                        col.setMaxWidth(Double.POSITIVE_INFINITY);
+
+                        gridPane.getColumnConstraints().setAll(col);
+
+                        RowConstraints row = new RowConstraints();
+                        row.setMinHeight(Double.NEGATIVE_INFINITY);
+                        row.setValignment(VPos.TOP);
+                        row.setVgrow(Priority.SOMETIMES);
+                        gridPane.getRowConstraints().setAll(row);
+
+                        {
+                            Label label = new Label(i18n("about.mrmc"));
+                            label.setWrapText(true);
+                            label.setTextAlignment(TextAlignment.JUSTIFY);
+                            GridPane.setRowIndex(label, 0);
+                            GridPane.setColumnIndex(label, 0);
+                            gridPane.getChildren().add(label);
+                        }
+
+                        sponsorPane.getChildren().setAll(gridPane);
+                        settingsPane.getContent().add(sponsorPane);
+                    }
+
                     ComponentSublist updatePane = new ComponentSublist();
                     updatePane.setTitle(i18n("update"));
                     updatePane.setHasSubtitle(true);
@@ -526,4 +558,5 @@ public abstract class SettingsView extends StackPane {
     protected abstract void onHelp();
     protected abstract void onExportLogs();
     protected abstract void onSponsor();
+    protected abstract void onMrmc();
 }
