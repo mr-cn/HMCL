@@ -35,6 +35,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import org.jackhuang.hmcl.Metadata;
 import org.jackhuang.hmcl.auth.*;
 import org.jackhuang.hmcl.auth.authlibinjector.AuthlibInjectorDownloadException;
 import org.jackhuang.hmcl.auth.authlibinjector.AuthlibInjectorServer;
@@ -91,11 +92,7 @@ public class AddAccountPane extends StackPane {
         cboType.getItems().setAll(Accounts.FACTORY_OFFLINE, Accounts.FACTORY_MOJANG, Accounts.FACTORY_AUTHLIB_INJECTOR);
         cboType.setConverter(stringConverter(Accounts::getLocalizedLoginTypeName));
         // try selecting the preferred login type
-        cboType.getSelectionModel().select(
-                cboType.getItems().stream()
-                        .filter(type -> Accounts.getLoginType(type).equals(config().getPreferredLoginType()))
-                        .findFirst()
-                        .orElse(Accounts.FACTORY_OFFLINE));
+        cboType.getSelectionModel().select(Accounts.FACTORY_AUTHLIB_INJECTOR);
 
         btnAddServer.visibleProperty().bind(cboServers.visibleProperty());
         btnManageServer.visibleProperty().bind(cboServers.visibleProperty());
@@ -229,6 +226,9 @@ public class AddAccountPane extends StackPane {
     private void onCreationCancel() {
         fireEvent(new DialogCloseEvent());
     }
+
+    @FXML
+    private void onRegister() { FXUtils.openLink(Metadata.MRMC_URL); }
 
     @FXML
     private void onManageInjecterServers() {

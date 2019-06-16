@@ -19,9 +19,15 @@ package org.jackhuang.hmcl.setting;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
+import org.jackhuang.hmcl.Metadata;
+import org.jackhuang.hmcl.auth.authlibinjector.AuthlibInjectorServer;
+import org.jackhuang.hmcl.task.Schedulers;
+import org.jackhuang.hmcl.task.Task;
+import org.jackhuang.hmcl.ui.animation.ContainerAnimations;
 import org.jackhuang.hmcl.util.InvocationDispatcher;
 import org.jackhuang.hmcl.util.Lang;
 import org.jackhuang.hmcl.util.io.FileUtils;
+import org.jackhuang.hmcl.util.io.NetworkUtils;
 import org.jackhuang.hmcl.util.platform.OperatingSystem;
 
 import java.io.IOException;
@@ -64,6 +70,13 @@ public final class ConfigHolder {
         Settings.init();
 
         if (newlyCreated) {
+            // MRMC: Set MRMC AuthlibInjectorServer
+            AuthlibInjectorServer serverBeingAdded = new AuthlibInjectorServer(Metadata.MRMC_AUTH_URL);;
+            if (!config().getAuthlibInjectorServers().contains(serverBeingAdded)) {
+                config().getAuthlibInjectorServers().add(serverBeingAdded);
+            }
+            // *************************************************
+
             saveConfigSync();
 
             // hide the config file on windows

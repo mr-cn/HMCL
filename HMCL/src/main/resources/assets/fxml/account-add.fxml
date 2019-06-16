@@ -24,14 +24,14 @@
                 <Label text="%account.methods" GridPane.halignment="RIGHT" GridPane.columnIndex="0"
                        GridPane.rowIndex="0"/>
 
-                <JFXComboBox fx:id="cboType" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+                <JFXComboBox fx:id="cboType" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="2" disable="true"/>
 
                 <Label fx:id="lblInjectorServer" text="%account.injector.server" GridPane.halignment="RIGHT"
                        GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
-                <JFXComboBox fx:id="cboServers" promptText="%account.injector.empty" maxHeight="25" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <JFXComboBox fx:id="cboServers" promptText="%account.injector.empty" maxHeight="25" GridPane.columnIndex="1" GridPane.rowIndex="1" disable="true"/>
 
-                <HBox GridPane.columnIndex="2" GridPane.rowIndex="1" spacing="8">
+                <HBox GridPane.columnIndex="2" GridPane.rowIndex="1" spacing="8" disable="true">
                     <HBox fx:id="linksContainer" alignment="CENTER_LEFT"/>
                     <JFXButton fx:id="btnAddServer" styleClass="toggle-icon4" onMouseClicked="#onAddInjecterServer">
                         <graphic>
@@ -73,6 +73,7 @@
                     <JFXButton fx:id="btnAccept" onMouseClicked="#onCreationAccept" text="%button.ok" styleClass="dialog-accept"/>
                 </SpinnerPane>
                 <JFXButton onMouseClicked="#onCreationCancel" text="%button.cancel" styleClass="dialog-cancel"/>
+                <JFXButton onMouseClicked="#onRegister" text="%button.register" styleClass="dialog-cancel"/>
             </HBox>
         </actions>
     </JFXDialogLayout>
