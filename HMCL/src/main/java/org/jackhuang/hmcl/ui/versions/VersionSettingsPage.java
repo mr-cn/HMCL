@@ -211,7 +211,7 @@ public final class VersionSettingsPage extends StackPane implements DecoratorPag
         FXUtils.bindString(txtMetaspace, versionSetting.permSizeProperty());
         FXUtils.bindString(txtWrapper, versionSetting.wrapperProperty());
         FXUtils.bindString(txtPrecallingCommand, versionSetting.preLaunchCommandProperty());
-        FXUtils.bindString(txtServerIP, versionSetting.serverIpProperty());
+        // FXUtils.bindString(txtServerIP, versionSetting.serverIpProperty());
         FXUtils.bindBoolean(chkFullscreen, versionSetting.fullscreenProperty());
         FXUtils.bindBoolean(chkNoGameCheck, versionSetting.notCheckGameProperty());
         FXUtils.bindBoolean(chkNoJVMCheck, versionSetting.notCheckJVMProperty());
